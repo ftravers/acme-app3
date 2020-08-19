@@ -1,15 +1,21 @@
 ;; shadow-cljs configuration
 {:source-paths
- ["src/dev"
-  "src/main"
-  "src/test"]
+ ["src"
+  "test"]
 
  :dependencies
- [[rum "0.11.3"]]
+ [[rum "0.11.3"]
+  [reagent "0.9.1"]]
 
  :builds
- {:app
-  {:target :browser
-   :output-dir "public/js"
-   :asset-path "/js"
-   :modules {:main {:entries [main.blah]}}}}}
+ {:app {:target :browser
+        :output-dir "public/js"
+        :asset-path "/js"
+        :modules {:app
+                  {;; :init-fn main.blah/go
+                   :devtools {:preloads [day8.re-frame-10x.preload]
+                              :repl-pprint true
+                              :http-root "resources/public"
+                              :http-port 3000
+                              :repl-init-ns main.blah}}}}}}
+

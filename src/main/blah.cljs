@@ -3,11 +3,12 @@
    [rum.core :refer [defc mount] :as rum]))
 
 (defc hello []
-  [:div "HelloTTTTFFFFooo!"])
+  [:div "HelloT!"])
 
 (defn main-page [comp]
   (mount
    (comp)
    (js/document.getElementById "app")))
 
-(main-page hello)
+(defn go []
+  (main-page hello))
